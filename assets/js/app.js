@@ -1,0 +1,1 @@
+console.info("%cBlogSphere Professional Loaded", "color:#6C63FF;font-weight:bold;font-size:14px;");
