@@ -1,1 +1,1 @@
-# BlogSphere includes schema, layout, authentication placeholders, post management placeholders, and modern UI starter.
+# BlogSphere Professional\nIncludes schema, layout, authentication placeholders, post management placeholders, and modern UI starter.

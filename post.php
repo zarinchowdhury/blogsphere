@@ -11,7 +11,7 @@ if (empty($slug)) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment'])) {
 
     if (!isset($_SESSION['user_id'])) {
-        header("Location: /BlogSphere/auth/login.php");
+        header("Location: " . BASE_URL . "auth/login.php");
         exit;
     }
 
@@ -118,11 +118,11 @@ try {
 
 <!-- NAV -->
 <nav class="bg-white shadow px-6 py-4 flex justify-between">
-    <a href="/BlogSphere/index.php" class="font-bold text-blue-600 text-xl">
+    <a href="<?= BASE_URL ?>index.php" class="font-bold text-blue-600 text-xl">
         BlogSphere
     </a>
 
-    <a href="/BlogSphere/category.php?slug=<?= $post['category_slug'] ?>"
+    <a href="<?= BASE_URL ?>category.php?slug=<?= $post['category_slug'] ?>"
        class="text-gray-600 hover:text-blue-600">
         ← Back to Category
     </a>
@@ -136,7 +136,7 @@ try {
 
     <div class="absolute bottom-0 bg-black/60 text-white p-6 w-full">
 
-        <a href="/BlogSphere/category.php?slug=<?= $post['category_slug'] ?>"
+        <a href="<?= BASE_URL ?>category.php?slug=<?= $post['category_slug'] ?>"
            class="bg-blue-600 px-3 py-1 text-sm rounded">
             <?= htmlspecialchars($post['category_name']) ?>
         </a>
@@ -176,7 +176,7 @@ try {
     <div class="grid md:grid-cols-4 gap-6">
 
         <?php foreach ($relatedPosts as $r): ?>
-            <a href="/BlogSphere/post.php?slug=<?= $r['slug'] ?>"
+            <a href="<?= BASE_URL ?>post.php?slug=<?= $r['slug'] ?>"
                class="bg-white rounded shadow hover:shadow-lg overflow-hidden">
 
                 <img src="<?= htmlspecialchars($r['image_url']) ?>"
@@ -220,7 +220,7 @@ try {
     <?php else: ?>
 
         <p class="text-gray-600 mb-4">
-            Please <a href="/BlogSphere/auth/login.php" class="text-blue-600">login</a> to comment.
+            Please <a href="<?= BASE_URL ?>auth/login.php" class="text-blue-600">login</a> to comment.
         </p>
 
     <?php endif; ?>
@@ -260,13 +260,13 @@ try {
                     <div class="flex gap-2 text-sm">
 
                         <!-- EDIT -->
-                        <a href="/BlogSphere/comment_edit.php?id=<?= $c['comment_id'] ?>"
+                        <a href="<?= BASE_URL ?>comment_edit.php?id=<?= $c['comment_id'] ?>"
                            class="text-blue-600 hover:underline">
                             Edit
                         </a>
 
                         <!-- DELETE -->
-                        <a href="/BlogSphere/comment_delete.php?id=<?= $c['comment_id'] ?>"
+                        <a href="<?= BASE_URL ?>comment_delete.php?id=<?= $c['comment_id'] ?>"
                            onclick="return confirm('Delete this comment?')"
                            class="text-red-600 hover:underline">
                             Delete

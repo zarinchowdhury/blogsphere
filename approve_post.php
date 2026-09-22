@@ -2,13 +2,12 @@
 require_once '../config/app.php';
 require_once '../includes/admin_guard.php';
 
-$id = $_GET['id'];
+$id = (int)($_GET['id'] ?? 0);
 
 $stmt = $conn->prepare("
     UPDATE posts
-    SET status='published',
-        approval_status='approved'
-    WHERE post_id=?
+    SET status = 'published'
+    WHERE post_id = ?
 ");
 
 $stmt->execute([$id]);

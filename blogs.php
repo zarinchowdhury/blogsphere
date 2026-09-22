@@ -40,19 +40,19 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
 
-        <a href="/BlogSphere/index.php"
+        <a href="<?= BASE_URL ?>index.php"
            class="text-2xl font-bold text-blue-600">
             BlogSphere
         </a>
 
         <div class="flex items-center gap-4">
 
-            <a href="/BlogSphere/index.php"
+            <a href="<?= BASE_URL ?>index.php"
                class="text-gray-600 hover:text-blue-600">
                 Home
             </a>
 
-            <a href="/BlogSphere/about.php"
+            <a href="<?= BASE_URL ?>about.php"
                class="text-gray-600 hover:text-blue-600">
                 About
             </a>
@@ -97,7 +97,7 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 ?>
 
                 <a
-                    href="/BlogSphere/post.php?slug=<?= urlencode($post['slug']) ?>"
+                    href="<?= BASE_URL ?>post.php?slug=<?= urlencode($post['slug']) ?>"
                     class="group bg-white rounded-2xl overflow-hidden shadow hover:shadow-2xl hover:-translate-y-1 transition duration-300 block"
                 >
 
@@ -193,7 +193,7 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 There are currently no published blogs.
             </p>
 
-            <a href="/BlogSphere/index.php"
+            <a href="<?= BASE_URL ?>index.php"
                class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">
 
                 Back Home

@@ -140,7 +140,7 @@ try {
             : 'https://via.placeholder.com/600x400?text=BlogSphere';
         ?>
 
-        <a href="/BlogSphere/post.php?slug=<?= urlencode($post['slug']) ?>"
+        <a href="<?= BASE_URL ?>post.php?slug=<?= urlencode($post['slug']) ?>"
    class="block bg-white rounded-xl shadow hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden">
 
     <img
