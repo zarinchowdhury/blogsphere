@@ -1,0 +1,1 @@
+<footer>BlogSphere © 2026</footer><script src='<?= BASE_URL ?>assets/js/app.js'></script></body></html>

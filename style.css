@@ -1,0 +1,12 @@
+body {
+    background: #f8f9fa;
+}
+
+.card {
+    border-radius: 10px;
+}
+
+.list-group-item:hover {
+    background: #eee;
+    cursor: pointer;
+}
