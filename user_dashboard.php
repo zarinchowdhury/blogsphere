@@ -1,17 +1,4 @@
 <?php
-<<<<<<< HEAD
-require_once 'config/app.php';
-
-if (!isset($_SESSION['user_id'])) {
-    header("Location: auth/login.php");
-    exit;
-}
-
-$id = $_SESSION['user_id'];
-
-$posts = $conn->prepare("
-    SELECT * FROM posts
-=======
 
 require_once '../config/app.php';
 
@@ -33,7 +20,6 @@ $totalPosts = $totalPostsStmt->fetchColumn();
 $stmt = $conn->prepare("
     SELECT *
     FROM posts
->>>>>>> 306c5fe61ea6d51e64307b22ebf557b95835a7e9
     WHERE author_id = ?
     ORDER BY created_at DESC
 ");

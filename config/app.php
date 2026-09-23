@@ -1,5 +1,4 @@
 <?php
-<<<<<<< HEAD
 /*
 |-----------------------------------
 | DYNAMIC BASE URL (auto-detects the actual
@@ -25,8 +24,6 @@ if ($documentRoot !== '' && $projectRoot !== '' && strpos($projectRoot, $documen
 }
 
 define("BASE_URL", $basePath);
-=======
->>>>>>> 306c5fe61ea6d51e64307b22ebf557b95835a7e9
 session_start();
 
 /*
@@ -51,11 +48,7 @@ if (isset($_SESSION['user_id'])) {
             session_unset();
             session_destroy();
 
-<<<<<<< HEAD
-            header("Location: " . BASE_URL . "auth/login.php?timeout=1");
-=======
             header("Location: /BlogSphere/auth/login.php?timeout=1");
->>>>>>> 306c5fe61ea6d51e64307b22ebf557b95835a7e9
             exit;
         }
     }
@@ -72,8 +65,5 @@ $conn = $db->connect();
 if (!$conn) {
     die("Database connection failed");
 }
-<<<<<<< HEAD
-=======
 
 define("BASE_URL", "http://localhost/BlogSphere/");
->>>>>>> 306c5fe61ea6d51e64307b22ebf557b95835a7e9

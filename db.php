@@ -1,17 +1,4 @@
 <?php
-<<<<<<< HEAD
-$host = "localhost";
-$user = "root";
-$pass = "";
-$db   = "blog_db";
-
-$conn = new mysqli($host, $user, $pass, $db);
-
-if ($conn->connect_error) {
-    die("Database connection failed: " . $conn->connect_error);
-}
-?>
-=======
 require_once __DIR__ . '/../config/database.php';
 
 $database = new Database();
@@ -46,4 +33,3 @@ $categories = $conn->query("SELECT * FROM categories")
         return $this->conn;
     }
 }
->>>>>>> 306c5fe61ea6d51e64307b22ebf557b95835a7e9

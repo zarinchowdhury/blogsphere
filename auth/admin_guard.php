@@ -13,11 +13,8 @@ if ($_SESSION['role'] !== 'admin') {
 } {
 
     if (!isset($_SESSION['user_id'])) {
-<<<<<<< HEAD
         header("Location: " . BASE_URL . "auth/login.php");
-=======
         header("Location: /BlogSphere/auth/login.php");
->>>>>>> 306c5fe61ea6d51e64307b22ebf557b95835a7e9
         exit;
     }
 
