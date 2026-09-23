@@ -2,12 +2,19 @@
 
 class Database {
 
-    private $host = "localhost";
-    private $db_name = "blogsphere_db";
-    private $username = "root";
-    private $password = "";
+    private $host;
+    private $db_name;
+    private $username;
+    private $password;
 
     public $conn;
+
+    public function __construct() {
+        $this->host = getenv("DB_HOST") ?: "localhost";
+        $this->db_name = getenv("DB_NAME") ?: "blogsphere_db";
+        $this->username = getenv("DB_USERNAME") ?: "root";
+        $this->password = getenv("DB_PASSWORD") ?: "";
+    }
 
     public function connect() {
 
