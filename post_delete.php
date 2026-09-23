@@ -1,71 +1,34 @@
 <?php
+require_once 'config/app.php';
 
-require_once '../config/app.php';
-
-/* AUTH CHECK */
 if (!isset($_SESSION['user_id'])) {
-    header("Location: ../auth/login.php");
+    header("Location: " . BASE_URL . "auth/login.php");
     exit;
 }
 
-/* ADMIN CHECK */
-if ($_SESSION['role'] !== 'admin') {
-    header("Location: ../index.php");
-    exit;
+$id = $_GET['id'] ?? null;
+
+if (!$id) {
+    die("Invalid post ID");
 }
 
-/*
-|--------------------------------------------------------------------------
-| Validate ID
-|--------------------------------------------------------------------------
-*/
-
-$id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
-
-if ($id <= 0) {
-    header("Location: posts.php");
-    exit;
-}
-
-/*
-|--------------------------------------------------------------------------
-| Check if post exists (optional but safer)
-|--------------------------------------------------------------------------
-*/
-
-$stmt = $conn->prepare("
-    SELECT post_id
-    FROM posts
-    WHERE post_id = ?
-");
-
+/* GET POST */
+$stmt = $conn->prepare("SELECT * FROM posts WHERE post_id = ?");
 $stmt->execute([$id]);
-
 $post = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$post) {
-    header("Location: posts.php");
-    exit;
+    die("Post not found");
 }
 
-/*
-|--------------------------------------------------------------------------
-| Delete Post
-|--------------------------------------------------------------------------
-*/
+/* PERMISSION CHECK */
+if ($_SESSION['role'] !== 'admin' && $_SESSION['user_id'] != $post['author_id']) {
+    die("Unauthorized access");
+}
 
-$stmt = $conn->prepare("
-    DELETE FROM posts
-    WHERE post_id = ?
-");
-
+/* DELETE */
+$stmt = $conn->prepare("DELETE FROM posts WHERE post_id = ?");
 $stmt->execute([$id]);
 
-/*
-|--------------------------------------------------------------------------
-| Redirect back
-|--------------------------------------------------------------------------
-*/
-
-header("Location: posts.php");
+header("Location: " . BASE_URL . "user/user_dashboard.php");
 exit;

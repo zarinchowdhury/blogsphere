@@ -3,7 +3,6 @@
 function requireLogin() {
     if (!isset($_SESSION['user_id'])) {
         header("Location: " . BASE_URL . "auth/login.php");
-        header("Location: /BlogSphere/auth/login.php");
         exit;
     }
 }
@@ -24,7 +23,6 @@ if ($_SESSION['role'] !== 'admin') {
 } {
     if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
         header("Location: " . BASE_URL . "index.php");
-        header("Location: /BlogSphere/index.php");
         exit;
     }
 }

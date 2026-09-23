@@ -48,7 +48,7 @@ if (isset($_SESSION['user_id'])) {
             session_unset();
             session_destroy();
 
-            header("Location: /BlogSphere/auth/login.php?timeout=1");
+            header("Location: " . BASE_URL . "auth/login.php?timeout=1");
             exit;
         }
     }
@@ -65,5 +65,3 @@ $conn = $db->connect();
 if (!$conn) {
     die("Database connection failed");
 }
-
-define("BASE_URL", "http://localhost/BlogSphere/");

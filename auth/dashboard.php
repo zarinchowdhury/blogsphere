@@ -61,11 +61,7 @@ $stats = [
                 Admin Dashboard
             </h1>
             <div class="mb-6">
-<<<<<<< HEAD
     <a href="<?= BASE_URL ?>admin/analytics.php"
-=======
-    <a href="/BlogSphere/admin/analytics.php"
->>>>>>> 306c5fe61ea6d51e64307b22ebf557b95835a7e9
         class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">
         📊 Analytics Dashboard
     </a>

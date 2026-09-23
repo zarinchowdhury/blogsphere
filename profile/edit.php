@@ -7,11 +7,7 @@ requireLogin();
 
 $user_id = $_SESSION['user_id'];
 
-<<<<<<< HEAD
 $stmt = $conn->prepare("SELECT * FROM users WHERE user_id = ?");
-=======
-$stmt = $conn->prepare("SELECT * FROM users WHERE id = ?");
->>>>>>> 306c5fe61ea6d51e64307b22ebf557b95835a7e9
 $stmt->execute([$user_id]);
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 

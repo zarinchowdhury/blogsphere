@@ -17,11 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stmt->execute([$email]);
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-<<<<<<< HEAD
     if (!$user || !password_verify($password, $user['password'])) {
-=======
-    if (!$user || !password_verify($password, $user['password_hash'])) {
->>>>>>> 306c5fe61ea6d51e64307b22ebf557b95835a7e9
         die("Invalid email or password");
     }
 

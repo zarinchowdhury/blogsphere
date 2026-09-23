@@ -14,7 +14,6 @@ if ($_SESSION['role'] !== 'admin') {
 
     if (!isset($_SESSION['user_id'])) {
         header("Location: " . BASE_URL . "auth/login.php");
-        header("Location: /BlogSphere/auth/login.php");
         exit;
     }
 

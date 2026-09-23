@@ -32,11 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         (
             username,
             email,
-<<<<<<< HEAD
             password,
-=======
-            password_hash,
->>>>>>> 306c5fe61ea6d51e64307b22ebf557b95835a7e9
             role
         )
         VALUES

@@ -12,11 +12,7 @@ if ($_SESSION['role'] !== 'admin') {
     exit;
 }
 
-<<<<<<< HEAD
 $cats = $conn->query("SELECT * FROM categories ORDER BY category_id DESC")
-=======
-$cats = $conn->query("SELECT * FROM categories ORDER BY id DESC")
->>>>>>> 306c5fe61ea6d51e64307b22ebf557b95835a7e9
             ->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
