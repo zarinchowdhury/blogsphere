@@ -1,5 +1,6 @@
 <?php
 
+<<<<<<< HEAD
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -43,4 +44,13 @@ function requireRole(string $role): void {
         http_response_code(403);
         die("Access denied. Requires role: {$role}");
     }
+=======
+function requireLogin() {
+    session_start();
+
+    if (!isset($_SESSION['user_id'])) {
+        header("Location: login.php");
+        exit;
+    }
+>>>>>>> 306c5fe61ea6d51e64307b22ebf557b95835a7e9
 }

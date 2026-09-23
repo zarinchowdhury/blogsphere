@@ -3,11 +3,7 @@
 class Database {
 
     private $host = "localhost";
-<<<<<<< HEAD
     private $db_name = "blogsphere_db";
-=======
-    private $db_name = "blogsphere";
->>>>>>> 306c5fe61ea6d51e64307b22ebf557b95835a7e9
     private $username = "root";
     private $password = "";
 

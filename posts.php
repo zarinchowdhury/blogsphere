@@ -67,19 +67,11 @@ ob_start();
 
             <td class="p-3 space-x-3">
 
-<<<<<<< HEAD
                <a href="<?= BASE_URL ?>post_edit.php?id=<?= $post['post_id'] ?>"
    class="bg-yellow-500 text-white px-3 py-1 rounded">
     Edit
 </a>
 <a href="<?= BASE_URL ?>post_delete.php?id=<?= $post['post_id'] ?>"
-=======
-               <a href="/BlogSphere/post_edit.php?id=<?= $post['post_id'] ?>"
-   class="bg-yellow-500 text-white px-3 py-1 rounded">
-    Edit
-</a>
-<a href="/BlogSphere/post_delete.php?id=<?= $post['post_id'] ?>"
->>>>>>> 306c5fe61ea6d51e64307b22ebf557b95835a7e9
    onclick="return confirm('Delete this post?')"
    class="bg-red-600 text-white px-3 py-1 rounded">
     Delete

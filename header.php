@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,3 +15,8 @@
 
 <div class="container-fluid">
 <div class="row">
+=======
+<?php if (isset($_SESSION['user_id']) && $_SESSION['role'] === 'admin'): ?>
+    <a href="admin/admin_dashboard.php">Admin Dashboard</a>
+<?php endif; ?>
+>>>>>>> 306c5fe61ea6d51e64307b22ebf557b95835a7e9
