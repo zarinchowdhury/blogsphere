@@ -56,6 +56,13 @@ $users = $conn->query("
 <title>Manage Users | BlogSphere</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Inter', system-ui, sans-serif; }
+  h1, h2, h3 { font-family: 'Poppins', system-ui, sans-serif; }
+</style>
 </head>
 
 <body class="bg-gray-100">
@@ -68,30 +75,30 @@ $users = $conn->query("
     <!-- SIDEBAR -->
     <aside id="sidebar" class="fixed md:static inset-y-0 left-0 z-40 w-64 bg-gray-900 text-white p-6 transform -translate-x-full md:translate-x-0 transition-transform duration-200 ease-in-out">
 
-        <h1 class="text-2xl font-bold mb-8">
+              <h1 class="text-2xl font-bold mb-8 bg-gradient-to-r from-indigo-400 to-fuchsia-400 bg-clip-text text-transparent">
             BlogSphere
         </h1>
 
         <nav class="space-y-2">
 
             <a href="admin_dashboard.php"
-               class="block px-3 py-2 rounded hover:bg-gray-800">
+               class="block px-3 py-2 rounded-lg hover:bg-gray-800 transition">
                Dashboard
             </a>
 
             <a href="posts.php"
-               class="block px-3 py-2 rounded hover:bg-gray-800">
+               class="block px-3 py-2 rounded-lg hover:bg-gray-800 transition">
                Posts
             </a>
 
             <a href="post_create.php"
-               class="block px-3 py-2 rounded hover:bg-gray-800">
+               class="block px-3 py-2 rounded-lg hover:bg-gray-800 transition">
                Create Post
             </a>
 
             <a href="users.php"
-               class="block px-3 py-2 rounded bg-gray-800">
-               Users
+               class="flex items-center gap-2 px-3 py-2 rounded-lg bg-gradient-to-r from-indigo-600/40 to-fuchsia-600/40 border border-indigo-500/30">
+               <span>👥</span> Users
             </a>
 
             <a href="../index.php"
@@ -128,13 +135,13 @@ $users = $conn->query("
 
         <div class="p-4 sm:p-6">
 
-            <div class="bg-white rounded-xl shadow overflow-hidden">
+                        <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
 
                 <div class="overflow-x-auto">
 
                 <table class="w-full min-w-[640px]">
 
-                    <thead class="bg-gray-100">
+                    <thead class="bg-gray-50 text-gray-500 text-sm uppercase tracking-wide">
 
                         <tr>
                             <th class="p-4 text-left">ID</th>
@@ -150,10 +157,10 @@ $users = $conn->query("
 
                     <?php foreach($users as $user): ?>
 
-                        <tr class="border-b hover:bg-gray-50">
+                                                <tr class="border-b border-gray-100 hover:bg-gray-50 transition">
 
-                            <td class="p-4">
-                                <?= $user['user_id'] ?>
+                            <td class="p-4 text-gray-500">
+                                #<?= $user['user_id'] ?>
                             </td>
 
                             <td class="p-4">
@@ -166,41 +173,40 @@ $users = $conn->query("
 
                             <td class="p-4">
 
-                                <?php if($user['role'] === 'admin'): ?>
+                                                                <?php if($user['role'] === 'admin'): ?>
 
-                                    <span class="px-2 py-1 bg-purple-100 text-purple-700 rounded text-xs">
+                                    <span class="px-2.5 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-medium">
                                         Admin
                                     </span>
 
                                 <?php elseif($user['role'] === 'author'): ?>
 
-                                    <span class="px-2 py-1 bg-green-100 text-green-700 rounded text-xs">
+                                    <span class="px-2.5 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">
                                         Author
                                     </span>
 
                                 <?php else: ?>
 
-                                    <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">
+                                    <span class="px-2.5 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-medium">
                                         User
                                     </span>
 
                                 <?php endif; ?>
-
                             </td>
 
                             <td class="p-4">
 
-                                <?php if($user['role'] === 'user'): ?>
+                                                                <?php if($user['role'] === 'user'): ?>
 
                                     <a href="?make_author=<?= $user['user_id'] ?>"
-                                       class="bg-green-600 text-white px-3 py-1 rounded text-sm">
+                                       class="bg-green-600 text-white px-3 py-1 rounded-lg text-sm hover:bg-green-700 transition">
                                         Make Author
                                     </a>
 
                                 <?php elseif($user['role'] === 'author'): ?>
 
                                     <a href="?remove_author=<?= $user['user_id'] ?>"
-                                       class="bg-red-600 text-white px-3 py-1 rounded text-sm">
+                                       class="bg-red-600 text-white px-3 py-1 rounded-lg text-sm hover:bg-red-700 transition">
                                         Remove Author
                                     </a>
 

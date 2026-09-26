@@ -18,6 +18,13 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
 <title><?= $title ?? 'Admin Panel' ?> | BlogSphere</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Inter', system-ui, sans-serif; }
+  h1, h2, h3 { font-family: 'Poppins', system-ui, sans-serif; }
+</style>
 
 </head>
 
@@ -31,7 +38,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     <!-- SIDEBAR -->
     <aside id="sidebar" class="fixed md:static inset-y-0 left-0 z-40 w-64 bg-gray-900 text-white p-6 transform -translate-x-full md:translate-x-0 transition-transform duration-200 ease-in-out">
 
-        <h1 class="text-2xl font-bold mb-10">
+               <h1 class="text-2xl font-bold mb-10 bg-gradient-to-r from-indigo-400 to-fuchsia-400 bg-clip-text text-transparent">
             BlogSphere
         </h1>
 
@@ -54,7 +61,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
 
     <a href="../index.php"
    target="_blank"
-   class="block px-3 py-2 rounded bg-blue-600 hover:bg-blue-700 font-medium">
+   class="block px-3 py-2 rounded hover:bg-gray-800">
     View Site
 </a>
     <a href="../auth/logout.php"

@@ -91,9 +91,7 @@ $status = ($action === 'publish') ? 'published' : 'draft';
 ?>
 
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
@@ -102,6 +100,13 @@ $status = ($action === 'publish') ? 'published' : 'draft';
 <title>Create Post | BlogSphere Admin</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Inter', system-ui, sans-serif; }
+  h1, h2, h3 { font-family: 'Poppins', system-ui, sans-serif; }
+</style>
 
 </head>
 
@@ -111,21 +116,19 @@ $status = ($action === 'publish') ? 'published' : 'draft';
 
 <div class="flex flex-wrap gap-3 justify-between items-center mb-8">
 
-<div class="flex justify-between items-center mb-8">
-
     <h1 class="text-3xl font-bold">
         Create New Post
     </h1>
 
-    <div class="space-x-3">
+    <div class="flex gap-3">
 
         <a href="admin_dashboard.php"
-           class="bg-gray-700 text-white px-4 py-2 rounded-lg">
+           class="bg-gray-700 text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition">
             Dashboard
         </a>
 
         <a href="posts.php"
-           class="bg-blue-600 text-white px-4 py-2 rounded-lg">
+           class="bg-gradient-to-r from-indigo-600 to-fuchsia-600 text-white px-4 py-2 rounded-lg hover:opacity-90 transition">
             Manage Posts
         </a>
 
@@ -142,7 +145,7 @@ $status = ($action === 'publish') ? 'published' : 'draft';
 <?php endif; ?>
 
 <form method="POST"
-      class="bg-white p-8 rounded-xl shadow-lg space-y-5">
+      class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg space-y-5">
 
     <div>
 
@@ -154,7 +157,7 @@ $status = ($action === 'publish') ? 'published' : 'draft';
             type="text"
             name="title"
             required
-            class="w-full border rounded-lg p-3"
+            class="w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
         >
 
     </div>
@@ -168,7 +171,7 @@ $status = ($action === 'publish') ? 'published' : 'draft';
         <textarea
             name="description"
             rows="3"
-            class="w-full border rounded-lg p-3"
+            class="w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
         ></textarea>
 
     </div>
@@ -183,7 +186,7 @@ $status = ($action === 'publish') ? 'published' : 'draft';
             name="content"
             rows="12"
             required
-            class="w-full border rounded-lg p-3"
+            class="w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
         ></textarea>
 
     </div>
@@ -197,7 +200,7 @@ $status = ($action === 'publish') ? 'published' : 'draft';
         <input
             type="text"
             name="image_url"
-            class="w-full border rounded-lg p-3"
+            class="w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
             placeholder="https://example.com/image.jpg"
         >
 
@@ -212,7 +215,7 @@ $status = ($action === 'publish') ? 'published' : 'draft';
         <select
             name="category_id"
             required
-            class="w-full border rounded-lg p-3"
+            class="w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
         >
 
             <?php foreach ($categories as $category): ?>
@@ -234,7 +237,7 @@ $status = ($action === 'publish') ? 'published' : 'draft';
         <!-- STATUS OPTIONS -->
 <label class="block font-semibold mb-2">Status</label>
 
-<select name="status" class="w-full border p-2 rounded">
+<select name="status" class="w-full border p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
 
     <option value="draft">
         💾 Save as Draft (Private)
@@ -246,20 +249,20 @@ $status = ($action === 'publish') ? 'published' : 'draft';
 
 </select>
    </div>
-    <div class="flex gap-3">
+
+    <div class="flex flex-wrap gap-3">
 
     <button type="submit" name="action" value="publish"
-        class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+        class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition">
         Publish
     </button>
 
     <button type="submit" name="action" value="draft"
-        class="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700">
+        class="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition">
         Save Draft
     </button>
 
-````php
-</div>
+    </div>
 
 </form>
 

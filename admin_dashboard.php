@@ -100,7 +100,7 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             <a href="../index.php"
                target="_blank"
-               class="block px-4 py-3 rounded-lg bg-blue-600 hover:bg-blue-700">
+               class="block px-4 py-3 rounded-lg hover:bg-slate-800">
                 View Site
             </a>
 

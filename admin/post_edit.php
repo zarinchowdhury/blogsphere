@@ -119,9 +119,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
@@ -130,6 +128,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <title>Edit Post | BlogSphere Admin</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Inter', system-ui, sans-serif; }
+  h1, h2, h3 { font-family: 'Poppins', system-ui, sans-serif; }
+</style>
 
 </head>
 
@@ -139,21 +144,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <div class="flex flex-wrap gap-3 justify-between items-center mb-8">
 
-<div class="flex justify-between items-center mb-8">
-
     <h1 class="text-3xl font-bold">
         Edit Post
     </h1>
 
-    <div class="space-x-3">
+    <div class="flex gap-3">
 
         <a href="admin_dashboard.php"
-           class="bg-gray-700 text-white px-4 py-2 rounded-lg">
+           class="bg-gray-700 text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition">
             Dashboard
         </a>
 
         <a href="posts.php"
-           class="bg-blue-600 text-white px-4 py-2 rounded-lg">
+           class="bg-gradient-to-r from-indigo-600 to-fuchsia-600 text-white px-4 py-2 rounded-lg hover:opacity-90 transition">
             Manage Posts
         </a>
 
@@ -170,7 +173,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <?php endif; ?>
 
 <form method="POST"
-      class="bg-white p-8 rounded-xl shadow-lg space-y-5">
+      class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg space-y-5">
 
     <div>
 
@@ -183,7 +186,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             name="title"
             value="<?= htmlspecialchars($post['title']) ?>"
             required
-            class="w-full border rounded-lg p-3"
+            class="w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
         >
 
     </div>
@@ -197,7 +200,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <textarea
             name="description"
             rows="3"
-            class="w-full border rounded-lg p-3"
+            class="w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
         ><?= htmlspecialchars($post['description']) ?></textarea>
 
     </div>
@@ -212,7 +215,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             name="content"
             rows="12"
             required
-            class="w-full border rounded-lg p-3"
+            class="w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
         ><?= htmlspecialchars($post['content']) ?></textarea>
 
     </div>
@@ -227,7 +230,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             type="text"
             name="image_url"
             value="<?= htmlspecialchars($post['image_url']) ?>"
-            class="w-full border rounded-lg p-3"
+            class="w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
         >
 
     </div>
@@ -240,7 +243,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <select
             name="category_id"
-            class="w-full border rounded-lg p-3"
+            class="w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
         >
 
             <?php foreach ($categories as $category): ?>
@@ -268,7 +271,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <select
             name="status"
-            class="w-full border rounded-lg p-3"
+            class="w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
         >
 
             <option
@@ -291,13 +294,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <button
         type="submit"
-        class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold"
+        class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold transition"
     >
         Update Post
     </button>
 
-
-````php
 </form>
 
 </div>

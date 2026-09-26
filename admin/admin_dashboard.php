@@ -63,6 +63,13 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Admin Dashboard | BlogSphere</title>
 <script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Inter', system-ui, sans-serif; }
+  h1, h2, h3 { font-family: 'Poppins', system-ui, sans-serif; }
+</style>
 </head>
 
 <body class="bg-gray-100">
@@ -75,15 +82,15 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <!-- SIDEBAR -->
     <aside id="sidebar" class="fixed md:static inset-y-0 left-0 z-40 w-64 bg-slate-900 text-white p-6 transform -translate-x-full md:translate-x-0 transition-transform duration-200 ease-in-out">
 
-        <h1 class="text-2xl font-bold mb-8">
+               <h1 class="text-2xl font-bold mb-8 bg-gradient-to-r from-indigo-400 to-fuchsia-400 bg-clip-text text-transparent">
             BlogSphere
         </h1>
 
         <nav class="space-y-2">
 
             <a href="admin_dashboard.php"
-               class="block px-4 py-3 rounded-lg bg-slate-800">
-                Dashboard
+               class="flex items-center gap-2 px-4 py-3 rounded-lg bg-gradient-to-r from-indigo-600/40 to-fuchsia-600/40 border border-indigo-500/30">
+                <span>🛠</span> Dashboard
             </a>
 
             <a href="posts.php"
@@ -149,42 +156,30 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
                  STATS FIRST
             ========================== -->
 
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+                       <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
 
-                <div class="bg-white p-6 rounded-xl shadow">
-
-                    <p class="text-gray-500">
-                        Users
-                    </p>
-
-                    <h2 class="text-4xl font-bold mt-2">
-                        <?= $totalUsers ?>
-                    </h2>
-
+                <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg transition-shadow border-t-4 border-indigo-500 flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-2xl shrink-0">👥</div>
+                    <div>
+                        <p class="text-gray-500 text-sm">Users</p>
+                        <h2 class="text-4xl font-bold mt-1"><?= $totalUsers ?></h2>
+                    </div>
                 </div>
 
-                <div class="bg-white p-6 rounded-xl shadow">
-
-                    <p class="text-gray-500">
-                        Posts
-                    </p>
-
-                    <h2 class="text-4xl font-bold mt-2">
-                        <?= $totalPosts ?>
-                    </h2>
-
+                <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg transition-shadow border-t-4 border-sky-500 flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-2xl shrink-0">📝</div>
+                    <div>
+                        <p class="text-gray-500 text-sm">Posts</p>
+                        <h2 class="text-4xl font-bold mt-1"><?= $totalPosts ?></h2>
+                    </div>
                 </div>
 
-                <div class="bg-white p-6 rounded-xl shadow">
-
-                    <p class="text-gray-500">
-                        Categories
-                    </p>
-
-                    <h2 class="text-4xl font-bold mt-2">
-                        <?= $totalCategories ?>
-                    </h2>
-
+                <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg transition-shadow border-t-4 border-fuchsia-500 flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-fuchsia-50 text-fuchsia-600 flex items-center justify-center text-2xl shrink-0">🗂️</div>
+                    <div>
+                        <p class="text-gray-500 text-sm">Categories</p>
+                        <h2 class="text-4xl font-bold mt-1"><?= $totalCategories ?></h2>
+                    </div>
                 </div>
 
             </div>

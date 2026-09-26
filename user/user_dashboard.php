@@ -42,6 +42,13 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>User Dashboard | BlogSphere</title>
 <script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Inter', system-ui, sans-serif; }
+  h1, h2, h3 { font-family: 'Poppins', system-ui, sans-serif; }
+</style>
 </head>
 
 <body class="bg-gray-100">
@@ -54,15 +61,15 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <!-- SIDEBAR -->
     <aside id="sidebar" class="fixed md:static inset-y-0 left-0 z-40 w-64 bg-gray-900 text-white p-6 transform -translate-x-full md:translate-x-0 transition-transform duration-200 ease-in-out">
 
-        <h1 class="text-2xl font-bold mb-8">
+               <h1 class="text-2xl font-bold mb-8 bg-gradient-to-r from-sky-400 to-emerald-400 bg-clip-text text-transparent">
             BlogSphere
         </h1>
 
         <nav class="space-y-2">
 
             <a href="user_dashboard.php"
-               class="block px-4 py-2 rounded bg-gray-800">
-                Dashboard
+               class="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-sky-600/30 to-emerald-600/30 border border-sky-500/30">
+                <span>🏠</span> Dashboard
             </a>
 
             <a href="../post_create.php"
@@ -115,28 +122,31 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         <div class="p-4 sm:p-6">
 
-            <!-- STATS -->
+                        <!-- STATS -->
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-8">
 
-                <div class="bg-white rounded-xl shadow p-6">
-                    <p class="text-gray-500">My Posts</p>
-                    <h2 class="text-3xl font-bold">
-                        <?= $totalPosts ?>
-                    </h2>
+                <div class="bg-white rounded-2xl shadow-sm hover:shadow-lg transition-shadow p-6 border-t-4 border-sky-500 flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-2xl shrink-0">📝</div>
+                    <div>
+                        <p class="text-gray-500 text-sm">My Posts</p>
+                        <h2 class="text-3xl font-bold"><?= $totalPosts ?></h2>
+                    </div>
                 </div>
 
-                <div class="bg-white rounded-xl shadow p-6">
-                    <p class="text-gray-500">Role</p>
-                    <h2 class="text-2xl font-bold capitalize">
-                        <?= htmlspecialchars($_SESSION['role']) ?>
-                    </h2>
+                <div class="bg-white rounded-2xl shadow-sm hover:shadow-lg transition-shadow p-6 border-t-4 border-indigo-500 flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-2xl shrink-0">🧑</div>
+                    <div>
+                        <p class="text-gray-500 text-sm">Role</p>
+                        <h2 class="text-2xl font-bold capitalize"><?= htmlspecialchars($_SESSION['role']) ?></h2>
+                    </div>
                 </div>
 
-                <div class="bg-white rounded-xl shadow p-6">
-                    <p class="text-gray-500">Status</p>
-                    <h2 class="text-2xl font-bold text-green-600">
-                        Active
-                    </h2>
+                <div class="bg-white rounded-2xl shadow-sm hover:shadow-lg transition-shadow p-6 border-t-4 border-emerald-500 flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-2xl shrink-0">✅</div>
+                    <div>
+                        <p class="text-gray-500 text-sm">Status</p>
+                        <h2 class="text-2xl font-bold text-green-600">Active</h2>
+                    </div>
                 </div>
 
             </div>

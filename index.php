@@ -13,17 +13,29 @@ $role = $_SESSION['role'] ?? 'guest';
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BlogSphere - Home</title>
 <script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Inter', system-ui, sans-serif; }
+  h1, h2, h3 { font-family: 'Poppins', system-ui, sans-serif; }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: #f1f5f9; }
+  ::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 999px; }
+  ::-webkit-scrollbar-thumb:hover { background: #64748b; }
+  @keyframes floatSlow { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-18px) } }
+  .float-slow { animation: floatSlow 7s ease-in-out infinite; }
+</style>
 </head>
 
 <body class="bg-gray-50 text-gray-800">
 
 <!-- NAVBAR -->
-<header class="bg-white shadow-sm sticky top-0 z-50">
-
+<header class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-gray-100">
 <div class="max-w-7xl mx-auto flex justify-between items-center px-4 sm:px-6 py-4">
 
-    <a href="<?= BASE_URL ?>index.php"
-        class="text-2xl font-bold text-blue-600">
+       <a href="<?= BASE_URL ?>index.php"
+        class="text-2xl font-bold bg-gradient-to-r from-sky-600 to-fuchsia-600 bg-clip-text text-transparent">
         BlogSphere
     </a>
 
@@ -191,12 +203,23 @@ class="block px-4 py-2 hover:bg-gray-100">
 </header>
 
 <!-- HERO -->
-<section class="relative">
+<section class="relative overflow-hidden">
 
-<div class="h-[420px] sm:h-[480px] md:h-[520px] bg-cover bg-center flex items-center justify-center"
+<div class="h-[460px] sm:h-[520px] md:h-[580px] bg-cover bg-center flex items-center justify-center relative"
     style="background-image:url('https://images.unsplash.com/photo-1455390582262-044cdead277a');">
 
-    <div class="bg-black/60 text-center text-white p-6 sm:p-10 rounded-2xl max-w-2xl mx-4">
+    <!-- Brand-tinted overlay -->
+    <div class="absolute inset-0 bg-gradient-to-br from-indigo-900/80 via-slate-900/60 to-fuchsia-900/70"></div>
+
+    <!-- Floating decorative orbs -->
+    <div class="absolute -top-10 -left-10 w-72 h-72 bg-sky-400/30 rounded-full blur-3xl float-slow"></div>
+    <div class="absolute bottom-0 right-0 w-80 h-80 bg-fuchsia-500/30 rounded-full blur-3xl float-slow" style="animation-delay:2s"></div>
+
+    <div class="relative text-center text-white p-6 sm:p-10 max-w-2xl mx-4">
+
+        <span class="inline-block mb-4 px-4 py-1 rounded-full bg-white/10 border border-white/20 backdrop-blur text-xs sm:text-sm tracking-wide uppercase">
+            Welcome to BlogSphere
+        </span>
 
         <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-4">
             Build & Share Your Ideas
@@ -209,15 +232,15 @@ class="block px-4 py-2 hover:bg-gray-100">
         <?php if (!$loggedIn): ?>
 
             <a href="<?= BASE_URL ?>auth/register.php"
-                class="inline-block bg-blue-600 px-6 py-3 rounded-lg hover:bg-blue-700">
-                Get Started
+                class="inline-block bg-gradient-to-r from-sky-500 to-fuchsia-500 px-6 sm:px-7 py-3 rounded-xl font-semibold shadow-lg shadow-fuchsia-900/30 hover:opacity-90 hover:-translate-y-0.5 transition transform">
+                Get Started →
             </a>
 
         <?php else: ?>
 
             <a href="<?= BASE_URL ?>blogs.php"
-    class="bg-blue-600 px-6 py-3 rounded hover:bg-blue-700">
-    Explore Blogs
+    class="inline-block bg-gradient-to-r from-sky-500 to-fuchsia-500 px-6 sm:px-7 py-3 rounded-xl font-semibold shadow-lg shadow-fuchsia-900/30 hover:opacity-90 hover:-translate-y-0.5 transition transform">
+    Explore Blogs →
 </a>
         <?php endif; ?>
 
@@ -244,9 +267,11 @@ $categories = [
 ?>
 
 <?php foreach ($categories as $c): ?>
-<div class="bg-white rounded-xl shadow hover:shadow-xl transition overflow-hidden">
+<div class="group bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden hover:-translate-y-1.5">
 
-    <img src="<?= $c[2] ?>" class="h-32 sm:h-44 w-full object-cover">
+    <div class="overflow-hidden">
+        <img src="<?= $c[2] ?>" class="h-32 sm:h-44 w-full object-cover group-hover:scale-110 transition-transform duration-500">
+    </div>
 
     <div class="p-3 sm:p-5 text-center">
 
@@ -255,8 +280,8 @@ $categories = [
         </h3>
 
         <a href="<?= BASE_URL ?>category.php?slug=<?= $c[0] ?>"
-            class="text-blue-600 font-medium hover:underline text-sm sm:text-base">
-            Explore →
+            class="inline-flex items-center gap-1 text-sky-600 font-medium hover:gap-2 transition-all text-sm sm:text-base">
+            Explore <span aria-hidden="true">→</span>
         </a>
 
     </div>
@@ -271,7 +296,8 @@ $categories = [
 
     <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 text-center px-4">
 
-        <div class="space-y-3 px-4">
+                <div class="space-y-3 px-4">
+            <div class="w-14 h-14 mx-auto rounded-2xl bg-sky-50 text-sky-600 flex items-center justify-center text-2xl">⚡</div>
             <h3 class="font-bold text-xl text-gray-800">Fast & Clean</h3>
             <p class="text-gray-500 leading-relaxed">
                 Optimized for reading experience
@@ -279,6 +305,7 @@ $categories = [
         </div>
 
         <div class="space-y-3 px-4">
+            <div class="w-14 h-14 mx-auto rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-2xl">✍️</div>
             <h3 class="font-bold text-xl text-gray-800">Easy Publishing</h3>
             <p class="text-gray-500 leading-relaxed">
                 Write and publish instantly
@@ -286,6 +313,7 @@ $categories = [
         </div>
 
         <div class="space-y-3 px-4">
+            <div class="w-14 h-14 mx-auto rounded-2xl bg-fuchsia-50 text-fuchsia-600 flex items-center justify-center text-2xl">🛡️</div>
             <h3 class="font-bold text-xl text-gray-800">Secure Platform</h3>
             <p class="text-gray-500 leading-relaxed">
                 Safe authentication & role-based access

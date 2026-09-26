@@ -23,19 +23,19 @@ ob_start();
     <h2 class="text-2xl font-bold">All Posts</h2>
 
     <a href="post_create.php"
-       class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+       class="bg-gradient-to-r from-indigo-600 to-fuchsia-600 text-white px-4 py-2 rounded-lg hover:opacity-90 transition shadow-sm">
         + New Post
     </a>
 
 </div>
 
-<div class="bg-white shadow rounded-xl overflow-hidden">
+<div class="bg-white shadow-sm rounded-2xl overflow-hidden">
 
 <div class="overflow-x-auto">
 
 <table class="w-full min-w-[640px]">
 
-    <thead class="bg-gray-100 text-left">
+    <thead class="bg-gray-50 text-left text-gray-500 text-sm uppercase tracking-wide">
         <tr>
             <th class="p-3">Title</th>
             <th class="p-3">Category</th>
@@ -48,7 +48,7 @@ ob_start();
 
         <?php foreach ($posts as $post): ?>
 
-        <tr class="border-b hover:bg-gray-50">
+                <tr class="border-b border-gray-100 hover:bg-gray-50 transition">
 
             <td class="p-3 font-medium">
                 <?= htmlspecialchars($post['title']) ?>
@@ -59,7 +59,7 @@ ob_start();
             </td>
 
             <td class="p-3">
-                <span class="px-2 py-1 text-xs rounded
+                <span class="px-2 py-1 text-xs rounded-full font-medium
                     <?= $post['status'] === 'published'
                         ? 'bg-green-100 text-green-700'
                         : 'bg-yellow-100 text-yellow-700' ?>">
@@ -67,15 +67,15 @@ ob_start();
                 </span>
             </td>
 
-            <td class="p-3 space-x-3 whitespace-nowrap">
+            <td class="p-3 space-x-2 whitespace-nowrap">
 
                <a href="<?= BASE_URL ?>post_edit.php?id=<?= $post['post_id'] ?>"
-   class="bg-yellow-500 text-white px-3 py-1 rounded">
+   class="bg-yellow-500 text-white px-3 py-1 rounded-lg hover:bg-yellow-600 transition">
     Edit
 </a>
 <a href="<?= BASE_URL ?>post_delete.php?id=<?= $post['post_id'] ?>"
    onclick="return confirm('Delete this post?')"
-   class="bg-red-600 text-white px-3 py-1 rounded">
+   class="bg-red-600 text-white px-3 py-1 rounded-lg hover:bg-red-700 transition">
     Delete
 </a>
             </td>

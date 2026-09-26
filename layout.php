@@ -51,7 +51,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     
     <a href="../index.php"
    target="_blank"
-   class="block px-3 py-2 rounded bg-blue-600 hover:bg-blue-700 font-medium">
+   class="block px-3 py-2 rounded hover:bg-gray-800">
     View Site
 </a>
     <a href="../auth/logout.php"
