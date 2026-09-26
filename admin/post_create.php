@@ -109,7 +109,8 @@ $status = ($action === 'publish') ? 'published' : 'draft';
 
 <div class="max-w-4xl mx-auto py-10 px-4">
 
-```
+<div class="flex flex-wrap gap-3 justify-between items-center mb-8">
+
 <div class="flex justify-between items-center mb-8">
 
     <h1 class="text-3xl font-bold">
@@ -244,10 +245,8 @@ $status = ($action === 'publish') ? 'published' : 'draft';
     </option>
 
 </select>
-    </div>
-
-    <button
-        <div class="flex gap-3">
+   </div>
+    <div class="flex gap-3">
 
     <button type="submit" name="action" value="publish"
         class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
@@ -259,11 +258,10 @@ $status = ($action === 'publish') ? 'published' : 'draft';
         Save Draft
     </button>
 
+````php
 </div>
-    </button>
 
 </form>
-```
 
 </div>
 

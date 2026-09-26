@@ -4,12 +4,19 @@ require_once '../config/app.php';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    $username = trim($_POST['username']);
-    $email = trim($_POST['email']);
-    $password = $_POST['password'];
+    $username = trim($_POST['username'] ?? '');
+    $email = trim($_POST['email'] ?? '');
+    $password = $_POST['password'] ?? '';
+    $role = $_POST['role'] ?? 'user';
+
+    // Whitelist the role — never trust raw POST data for something this sensitive
+    if (!in_array($role, ['user', 'admin'], true)) {
+        $role = 'user';
+    }
 
     if (empty($username) || empty($email) || empty($password)) {
-        die("All fields are required");
+        header("Location: register.php?error=" . urlencode("All fields are required"));
+        exit;
     }
 
     $stmt = $conn->prepare("
@@ -22,7 +29,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stmt->execute([$email]);
 
     if ($stmt->fetch()) {
-        die("Email already exists");
+        header("Location: register.php?error=" . urlencode("Email already exists"));
+        exit;
     }
 
     $hash = password_hash($password, PASSWORD_BCRYPT);
@@ -37,17 +45,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         )
         VALUES
         (
-            ?, ?, ?, 'user'
+            ?, ?, ?, ?
         )
     ");
 
     $stmt->execute([
         $username,
         $email,
-        $hash
+        $hash,
+        $role
     ]);
 
-    header("Location: login.php");
+    header("Location: login.php?registered=1");
     exit;
 }
 ?>

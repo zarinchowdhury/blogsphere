@@ -18,22 +18,23 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if (!$user || !password_verify($password, $user['password'])) {
-        die("Invalid email or password");
+        header("Location: login.php?error=" . urlencode("Invalid email or password"));
+        exit;
     }
 
     session_regenerate_id(true);
 
-$_SESSION['user_id'] = $user['user_id'];
-$_SESSION['username'] = $user['username'];
-$_SESSION['role'] = $user['role'];
+    $_SESSION['user_id'] = $user['user_id'];
+    $_SESSION['username'] = $user['username'];
+    $_SESSION['role'] = $user['role'];
 
-if ($user['role'] === 'admin') {
-    header("Location: ../admin/admin_dashboard.php");
+    if ($user['role'] === 'admin') {
+        header("Location: ../admin/admin_dashboard.php");
+        exit;
+    }
+
+    /* ALL normal users go to HOME */
+    header("Location: ../index.php");
     exit;
-}
-
-/* ALL normal users go to HOME */
-header("Location: ../index.php");
-exit;
 }
 ?>

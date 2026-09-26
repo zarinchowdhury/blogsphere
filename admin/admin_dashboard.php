@@ -67,10 +67,13 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <body class="bg-gray-100">
 
-<div class="flex min-h-screen">
+<div class="flex min-h-screen relative">
+
+    <!-- MOBILE OVERLAY -->
+    <div id="sidebarOverlay" class="hidden fixed inset-0 bg-black/40 z-30 md:hidden"></div>
 
     <!-- SIDEBAR -->
-    <aside class="w-64 bg-slate-900 text-white p-6">
+    <aside id="sidebar" class="fixed md:static inset-y-0 left-0 z-40 w-64 bg-slate-900 text-white p-6 transform -translate-x-full md:translate-x-0 transition-transform duration-200 ease-in-out">
 
         <h1 class="text-2xl font-bold mb-8">
             BlogSphere
@@ -114,29 +117,39 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </aside>
 
     <!-- MAIN -->
-    <main class="flex-1">
+    <main class="flex-1 w-full">
 
         <!-- TOP NAVBAR -->
-        <div class="bg-white shadow px-6 py-4 flex justify-between items-center">
+        <div class="bg-white shadow px-4 sm:px-6 py-4 flex justify-between items-center">
 
-            <h2 class="text-xl font-bold">
-                Admin Dashboard
-            </h2>
+            <div class="flex items-center gap-3">
 
-            <div class="text-gray-600">
+                <button id="sidebarToggle" class="md:hidden p-2 rounded hover:bg-gray-100" aria-label="Open menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+
+                <h2 class="text-lg sm:text-xl font-bold">
+                    Admin Dashboard
+                </h2>
+
+            </div>
+
+            <div class="text-sm sm:text-base text-gray-600 truncate max-w-[140px] sm:max-w-none">
                 Welcome,
                 <strong><?= htmlspecialchars($_SESSION['username']) ?></strong>
             </div>
 
         </div>
 
-        <div class="p-6 space-y-6">
+        <div class="p-4 sm:p-6 space-y-6">
 
             <!-- =========================
                  STATS FIRST
             ========================== -->
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
 
                 <div class="bg-white p-6 rounded-xl shadow">
 
@@ -192,7 +205,9 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                 </div>
 
-                <table class="w-full text-left">
+                <div class="overflow-x-auto">
+
+                <table class="w-full text-left min-w-[640px]">
 
                     <thead class="bg-orange-50">
 
@@ -247,12 +262,12 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 Reject
             </a>
 
-           <a href="<?= BASE_URL ?>post_edit.php?id=<?= $post['post_id'] ?>"
+           <a href="<?= BASE_URL ?>post_edit.php?id=<?= $p['post_id'] ?>"
    class="bg-yellow-500 text-white px-3 py-1 rounded">
     Edit
 </a>
 
-            <a href="<?= BASE_URL ?>post_delete.php?id=<?= $post['post_id'] ?>"
+            <a href="<?= BASE_URL ?>post_delete.php?id=<?= $p['post_id'] ?>"
    onclick="return confirm('Delete this post?')"
    class="bg-red-600 text-white px-3 py-1 rounded">
     Delete
@@ -269,6 +284,8 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                 </table>
 
+                </div>
+
             </div>
 
             <?php endif; ?>
@@ -279,7 +296,7 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             <div class="bg-white rounded-xl shadow overflow-hidden">
 
-                <div class="p-4 border-b flex justify-between items-center">
+                <div class="p-4 border-b flex flex-wrap gap-3 justify-between items-center">
 
                     <h3 class="font-semibold text-lg">
                         Latest Posts
@@ -292,7 +309,9 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                 </div>
 
-                <table class="w-full text-left">
+                <div class="overflow-x-auto">
+
+                <table class="w-full text-left min-w-[640px]">
 
                     <thead class="bg-gray-100">
 
@@ -361,6 +380,8 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                 </table>
 
+                </div>
+
             </div>
 
         </div>
@@ -368,6 +389,26 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </main>
 
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("sidebarOverlay");
+    const toggleBtn = document.getElementById("sidebarToggle");
+
+    function openSidebar() {
+        sidebar?.classList.remove("-translate-x-full");
+        overlay?.classList.remove("hidden");
+    }
+    function closeSidebar() {
+        sidebar?.classList.add("-translate-x-full");
+        overlay?.classList.add("hidden");
+    }
+
+    toggleBtn?.addEventListener("click", openSidebar);
+    overlay?.addEventListener("click", closeSidebar);
+});
+</script>
 
 </body>
 </html>

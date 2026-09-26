@@ -33,8 +33,10 @@ $image = !empty($post['image_url'])
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Preview Post | Admin</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -42,7 +44,7 @@ $image = !empty($post['image_url'])
 <body class="bg-gray-100">
 
 <!-- TOP BAR -->
-<div class="bg-white shadow p-4 flex justify-between items-center">
+<div class="bg-white shadow p-4 flex flex-wrap gap-2 justify-between items-center">
     <h1 class="font-bold text-lg">Post Preview</h1>
 
     <a href="admin_dashboard.php"
@@ -51,20 +53,20 @@ $image = !empty($post['image_url'])
     </a>
 </div>
 
-<div class="max-w-4xl mx-auto py-10">
+<div class="max-w-4xl mx-auto py-10 px-4">
 
     <!-- IMAGE -->
     <img src="<?= htmlspecialchars($image) ?>"
-         class="w-full h-80 object-cover rounded-xl shadow">
+         class="w-full h-48 sm:h-64 md:h-80 object-cover rounded-xl shadow">
 
     <!-- CONTENT -->
-    <div class="bg-white p-6 mt-6 rounded-xl shadow">
+    <div class="bg-white p-4 sm:p-6 mt-6 rounded-xl shadow">
 
         <span class="text-sm text-blue-600 font-semibold">
             <?= htmlspecialchars($post['category_name'] ?? 'Uncategorized') ?>
         </span>
 
-        <h1 class="text-3xl font-bold mt-2">
+        <h1 class="text-2xl sm:text-3xl font-bold mt-2">
             <?= htmlspecialchars($post['title']) ?>
         </h1>
 
@@ -80,7 +82,7 @@ $image = !empty($post['image_url'])
         </p>
 
         <!-- ACTION BUTTONS -->
-        <div class="flex gap-3 mt-6">
+        <div class="flex flex-wrap gap-3 mt-6">
 
             <a href="approve_post.php?id=<?= $post['post_id'] ?>"
                class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">

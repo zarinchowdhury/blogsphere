@@ -60,10 +60,13 @@ $users = $conn->query("
 
 <body class="bg-gray-100">
 
-<div class="flex min-h-screen">
+<div class="flex min-h-screen relative">
+
+    <!-- MOBILE OVERLAY -->
+    <div id="sidebarOverlay" class="hidden fixed inset-0 bg-black/40 z-30 md:hidden"></div>
 
     <!-- SIDEBAR -->
-    <aside class="w-64 bg-gray-900 text-white p-6">
+    <aside id="sidebar" class="fixed md:static inset-y-0 left-0 z-40 w-64 bg-gray-900 text-white p-6 transform -translate-x-full md:translate-x-0 transition-transform duration-200 ease-in-out">
 
         <h1 class="text-2xl font-bold mb-8">
             BlogSphere
@@ -107,19 +110,29 @@ $users = $conn->query("
     </aside>
 
     <!-- MAIN -->
-    <main class="flex-1">
+    <main class="flex-1 w-full">
 
-        <div class="bg-white shadow px-6 py-4">
-            <h2 class="text-xl font-semibold">
+        <div class="bg-white shadow px-4 sm:px-6 py-4 flex items-center gap-3">
+
+            <button id="sidebarToggle" class="md:hidden p-2 rounded hover:bg-gray-100" aria-label="Open menu">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+
+            <h2 class="text-lg sm:text-xl font-semibold">
                 User Management
             </h2>
+
         </div>
 
-        <div class="p-6">
+        <div class="p-4 sm:p-6">
 
             <div class="bg-white rounded-xl shadow overflow-hidden">
 
-                <table class="w-full">
+                <div class="overflow-x-auto">
+
+                <table class="w-full min-w-[640px]">
 
                     <thead class="bg-gray-100">
 
@@ -209,6 +222,8 @@ $users = $conn->query("
 
                 </table>
 
+                </div>
+
             </div>
 
         </div>
@@ -216,6 +231,26 @@ $users = $conn->query("
     </main>
 
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("sidebarOverlay");
+    const toggleBtn = document.getElementById("sidebarToggle");
+
+    function openSidebar() {
+        sidebar?.classList.remove("-translate-x-full");
+        overlay?.classList.remove("hidden");
+    }
+    function closeSidebar() {
+        sidebar?.classList.add("-translate-x-full");
+        overlay?.classList.add("hidden");
+    }
+
+    toggleBtn?.addEventListener("click", openSidebar);
+    overlay?.addEventListener("click", closeSidebar);
+});
+</script>
 
 </body>
 </html>

@@ -18,7 +18,7 @@ $posts = $stmt->fetchAll();
 ob_start();
 ?>
 
-<div class="flex justify-between mb-6">
+<div class="flex flex-wrap gap-3 justify-between items-center mb-6">
 
     <h2 class="text-2xl font-bold">All Posts</h2>
 
@@ -31,7 +31,9 @@ ob_start();
 
 <div class="bg-white shadow rounded-xl overflow-hidden">
 
-<table class="w-full">
+<div class="overflow-x-auto">
+
+<table class="w-full min-w-[640px]">
 
     <thead class="bg-gray-100 text-left">
         <tr>
@@ -65,7 +67,7 @@ ob_start();
                 </span>
             </td>
 
-            <td class="p-3 space-x-3">
+            <td class="p-3 space-x-3 whitespace-nowrap">
 
                <a href="<?= BASE_URL ?>post_edit.php?id=<?= $post['post_id'] ?>"
    class="bg-yellow-500 text-white px-3 py-1 rounded">
@@ -85,6 +87,8 @@ ob_start();
     </tbody>
 
 </table>
+
+</div>
 
 </div>
 

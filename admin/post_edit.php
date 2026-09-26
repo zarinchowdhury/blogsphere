@@ -137,7 +137,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <div class="max-w-4xl mx-auto py-10 px-4">
 
-```
+<div class="flex flex-wrap gap-3 justify-between items-center mb-8">
+
 <div class="flex justify-between items-center mb-8">
 
     <h1 class="text-3xl font-bold">
@@ -295,8 +296,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         Update Post
     </button>
 
+
+````php
 </form>
-```
 
 </div>
 
